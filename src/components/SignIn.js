@@ -19,7 +19,7 @@ const SignIn = () => {
     <div className="container d-flex justify-content-center mt-5">
       <Card style={{ width: "28rem", height: "auto" }} className="mx-auto mt-5">
         <Card.Header className="bg-dark text-white text-center ">
-          Get Started to FLASH
+          Get Started to FLASH!
         </Card.Header>
         <Card.Body>
           <Form onSubmit={handleSubmit}>
@@ -46,9 +46,11 @@ const SignIn = () => {
                 Please create a room.
               </Form.Text>
             </Form.Group>
-            <Button variant="primary" type="submit" disabled={!name || !room}>
-              Submit
-            </Button>
+            <div className="d-grid gap-2">
+              <Button variant="primary" type="submit" disabled={!name || !room}>
+                Enter
+              </Button>
+            </div>
           </Form>
         </Card.Body>
       </Card>
