@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import queryString from "query-string";
-import io, { socket } from "socket.io-client";
+import io from "socket.io-client";
 
 const Chat = ({ location }) => {
   const [name, setName] = useState("");
@@ -18,7 +17,12 @@ const Chat = ({ location }) => {
     setRoom(room);
     console.log(socket);
 
-    socket.emit("participant", { name, room });
+    socket.emit("participant", { name, room }, () => {});
+
+    return () => {
+      socket.emit("disconnect");
+      socket.off();
+    };
   }, [ENDPOINT, data]);
   return <div>Hello Gandalf hey</div>;
 };
