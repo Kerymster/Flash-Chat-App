@@ -5,6 +5,7 @@ import io from "socket.io-client";
 
 import ChatHeader from "./ChatHeader";
 import Input from "./Input";
+import Messages from "./Messages";
 
 let socket;
 
@@ -47,7 +48,6 @@ const Chat = ({ location }) => {
       setUsers(users);
     });
   }, []);
-  // handler for sending messages
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -63,10 +63,7 @@ const Chat = ({ location }) => {
     <div className="container d-flex aling-items-center justify-content-center">
       <Card className="mt-5" style={{ width: "500px" }}>
         <ChatHeader room={room} name={name} />
-        <Card.Body style={{ height: "500px" }}>
-          This is some text within a card body.
-        </Card.Body>
-
+        <Messages messages={messages} name={name} />
         <Input
           message={message}
           setMessage={setMessage}
