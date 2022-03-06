@@ -1,5 +1,6 @@
 import React from "react";
-import { Toast } from "react-bootstrap";
+import { Toast, Card } from "react-bootstrap";
+import ReactEmoji from "react-emoji";
 
 const Message = ({ message: { user, text }, name }) => {
   let isSentByCurrentUser = false;
@@ -9,26 +10,26 @@ const Message = ({ message: { user, text }, name }) => {
     isSentByCurrentUser = true;
   }
   return isSentByCurrentUser ? (
-    <Toast className="ms-auto" bg="success">
-      <Toast.Header>
-        <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+    <Toast className="ms-auto mb-2" bg="success" style={{ width: "300px" }}>
+      <Card.Header style={{ backgroundColor: "#E6F5EA" }}>
         <strong className="me-auto">{trimmedName}</strong>
-        <small>11 mins ago</small>
-      </Toast.Header>
+      </Card.Header>
       <Toast.Body>
-        <p>{text}</p>
+        <p className="text-white">{ReactEmoji.emojify(text)}</p>
       </Toast.Body>
     </Toast>
   ) : (
-    <Toast className="d-inline-block m-1" bg="warning">
+    <Toast
+      className="d-inline-block mb-2"
+      bg="warning"
+      style={{ width: "300px" }}
+    >
       <Toast.Body className={"dark" && "text-white"}>
-        <p>{text}</p>
+        <p>{ReactEmoji.emojify(text)}</p>
       </Toast.Body>
-      <Toast.Header>
-        <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+      <Card.Header style={{ backgroundColor: "#FCF3E5" }}>
         <strong className="me-auto">{user}</strong>
-        <small>11 mins ago</small>
-      </Toast.Header>
+      </Card.Header>
     </Toast>
   );
 };

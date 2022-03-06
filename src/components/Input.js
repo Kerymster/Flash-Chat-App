@@ -3,7 +3,7 @@ import { Card, InputGroup, FormControl, Button } from "react-bootstrap";
 
 const Input = ({ message, sendMessage, setMessage }) => {
   return (
-    <Card.Footer>
+    <Card.Footer className="mt-2">
       <InputGroup className="mb-3">
         <FormControl
           placeholder="Type here..."

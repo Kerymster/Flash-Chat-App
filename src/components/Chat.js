@@ -33,10 +33,10 @@ const Chat = ({ location }) => {
 
     socket.emit("join", { name, room }, () => {});
 
-    // return () => {
-    //   socket.emit("disconnect");
-    //   socket.off();
-    // };
+    return () => {
+      socket.emit("disconnect");
+      socket.off();
+    };
   }, [ENDPOINT, data]);
 
   useEffect(() => {
